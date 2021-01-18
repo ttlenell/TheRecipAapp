@@ -1,20 +1,18 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import 'react-native-gesture-handler';
 
 import HomeScreen from '../screens/HomeScreen';
-// import MessageScreen from '../screens/MessageScreen';
-// import PostScreen from '../screens/PostScreen';
-// import NotificationScreen from '../screens/NotificationScreen';
-// import ProfileScreen from '../screens/ProfileScreen';
+import FavoritesScreen from '../screens/FavoritesScreen';
+import SearchScreen from '../screens/SearchScreen';
 
 // eslint-disable-next-line no-undef
 export default MainStackScreens = () => {
   const MainStack = createBottomTabNavigator();
 
   const tabBarOptions = {
-    showLabel: false,
+    showLabel: true,
     style: {
       backgroundColor: '#222222',
       paddingBottom: 12,
@@ -23,43 +21,27 @@ export default MainStackScreens = () => {
 
   const screenOptions = ({route}) => ({
     tabBarIcon: ({focused}) => {
-      let iconName = 'ios-home';
+      let iconName = 'heart-o';
 
       switch (route.name) {
         case 'Home':
-          iconName = 'ios-home';
+          iconName = 'home';
           break;
 
-        case 'Message':
-          iconName = 'ios-chatboxes';
+        case 'Favorites':
+          iconName = 'heart-o';
           break;
 
-        case 'Notification':
-          iconName = 'ios-notifications';
+        case 'Search':
+          iconName = 'search';
           break;
 
-        case 'Profile':
-          iconName = 'ios-person';
-          break;
+        // case 'Profile':
+        //   iconName = 'ios-person';
+        //   break;
 
         default:
-          iconName = 'ios-home';
-      }
-
-      if (route.name === 'Post') {
-        return (
-          <Icon
-            name="ios-add-circle"
-            size={48}
-            color="#23a8d9"
-            style={{
-              shadowColor: '#23a8d9',
-              shadowOffset: {width: 0, height: 10},
-              shadowRadius: 10,
-              shadowOpacity: 0.3,
-            }}
-          />
-        );
+          iconName = 'home';
       }
 
       return (
@@ -77,10 +59,8 @@ export default MainStackScreens = () => {
       tabBarOptions={tabBarOptions}
       screenOptions={screenOptions}>
       <MainStack.Screen name="Home" component={HomeScreen} />
-      {/* <MainStack.Screen name="Message" component={MessageScreen} />
-      <MainStack.Screen name="Post" component={PostScreen} />
-      <MainStack.Screen name="Notification" component={NotificationScreen} />
-      <MainStack.Screen name="Profile" component={ProfileScreen} /> */}
+      <MainStack.Screen name="Favorites" component={FavoritesScreen} />
+      <MainStack.Screen name="Search" component={SearchScreen} />
     </MainStack.Navigator>
   );
 };

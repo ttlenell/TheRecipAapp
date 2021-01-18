@@ -15,30 +15,9 @@ import {
 import {FirebaseContext} from '../context/FirebaseContext';
 import {UserContext} from '../context/UserContext';
 import {Button, Icon} from 'native-base';
-import {db} from '../config/firebase';
-import {auth} from '../config/firebase';
-// import auth from '@react-native-firebase/auth';
-// import {firebase} from '@react-native-firebase/app';
-// import firestore from '@react-native-firebase/firestore';
 
 // eslint-disable-next-line no-undef
 export default Login = ({navigation}) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
-  // async function LoginUser() {
-  //   await firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(email.trim(), password)
-  //     .then(() => {
-  //       navigation.navigate('Home');
-  //       // alert('WELCOME');
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // }
-
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
@@ -59,7 +38,7 @@ export default Login = ({navigation}) => {
         username: userInfo.username,
         email: userInfo.email,
         uid,
-        profilePhotoUrl: userInfo.profilePhotoUrl,
+        // profilePhotoUrl: userInfo.profilePhotoUrl,
         isLoggedIn: true,
       });
     } catch (error) {
@@ -91,8 +70,11 @@ export default Login = ({navigation}) => {
                 <TextInput
                   style={styles.input}
                   placeholder={'Email'}
-                  inlineImageLeft={'account'}
+                  // inlineImageLeft={'account'}
                   keyboardType="default"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  autoCompleteType="off"
                   onChangeText={(text) => setEmail(text)}
                   value={email}
                 />
@@ -102,9 +84,11 @@ export default Login = ({navigation}) => {
                 <TextInput
                   style={styles.input}
                   placeholder={'Password'}
-                  inlineImageLeft={'account'}
+                  // inlineImageLeft={'account'}
                   keyboardType="default"
                   autoCapitalize="none"
+                  autoCorrect={false}
+                  autoCompleteType="off"
                   onChangeText={(text) => setPassword(text)}
                   value={password}
                 />

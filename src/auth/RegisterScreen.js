@@ -7,50 +7,19 @@ import {
   TextInput,
 } from 'react-native';
 import {Button, Icon} from 'native-base';
-// import auth from '@react-native-firebase/auth';
-// import {firebase} from '@react-native-firebase/auth';
-// import firestore from '@react-native-firebase/firestore';
 
 import {FirebaseContext} from '../context/FirebaseContext';
 import {UserContext} from '../context/UserContext';
 
 // eslint-disable-next-line no-undef
 export default Register = () => {
-  // firebase.initializeApp();
-
-  // const firestore_ref = firestore().collection('users');
-
-  // const [fullName, setFullName] = useState('');
-  // const [displayName, setDisplayName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
-  // async function RegisterUser() {
-  //   await firebase
-  //     .auth()
-  //     .createUserWithEmailAndPassword(email.trim(), password)
-  //     .then((loggeduser) => {
-  //       const userdata = firestore_ref.doc(loggeduser.user.uid);
-  //       userdata
-  //         .set({
-  //           name: fullName,
-  //           email: email,
-  //           displayName: displayName,
-  //         })
-  //         .then(() => {
-  //           alert('sucesss');
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
   // }
 
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
-  const [profilePhoto, setProfilePhoto] = useState();
+  // const [profilePhoto, setProfilePhoto] = useState();
   const firebase = useContext(FirebaseContext);
   const [_, setUser] = useContext(UserContext);
   const [displayName, setDisplayName] = useState();
@@ -58,7 +27,8 @@ export default Register = () => {
   const RegisterUser = async () => {
     setLoading(true);
 
-    const user = {username, email, password, profilePhoto};
+    const user = {username, email, password};
+    // const user = {username, email, password, profilePhoto};
 
     try {
       const createdUser = await firebase.createUser(user);
@@ -99,6 +69,9 @@ export default Register = () => {
           placeholder={'Email'}
           inlineImageLeft={'account'}
           keyboardType="default"
+          autoCapitalize="none"
+          autoCorrect={false}
+          autoCompleteType="off"
         />
         <TextInput
           style={styles.textinput}
@@ -107,15 +80,9 @@ export default Register = () => {
           inlineImageLeft={'account'}
           keyboardType="default"
           autoCapitalize="none"
+          autoCorrect={false}
+          autoCompleteType="off"
         />
-
-        {/* <TextInput
-          style={styles.textinput}
-          onChangeText={(text) => setDisplayName(text)}
-          placeholder={'Display name'}
-          inlineImageLeft={'account'}
-          keyboardType="default"
-        /> */}
 
         <Button
           style={{

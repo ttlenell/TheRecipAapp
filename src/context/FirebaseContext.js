@@ -33,9 +33,9 @@ const Firebase = {
         profilePhotoUrl,
       });
 
-      if (user.profilePhoto) {
-        profilePhotoUrl = await Firebase.uploadProfilePhoto(user.profilePhoto);
-      }
+      // if (user.profilePhoto) {
+      //   profilePhotoUrl = await Firebase.uploadProfilePhoto(user.profilePhoto);
+      // }
 
       delete user.password;
 
@@ -45,26 +45,26 @@ const Firebase = {
     }
   },
 
-  uploadProfilePhoto: async (uri) => {
-    const uid = Firebase.getCurrentUser().uid;
+  // uploadProfilePhoto: async (uri) => {
+  //   const uid = Firebase.getCurrentUser().uid;
 
-    try {
-      const photo = await Firebase.getBlob(uri);
+  //   try {
+  //     const photo = await Firebase.getBlob(uri);
 
-      const imageRef = firebase.storage().ref('profilePhotos').child(uid);
-      await imageRef.put(photo);
+  //     const imageRef = firebase.storage().ref('profilePhotos').child(uid);
+  //     await imageRef.put(photo);
 
-      const url = await imageRef.getDownloadURL();
+  //     const url = await imageRef.getDownloadURL();
 
-      await db.collection('users').doc(uid).update({
-        profilePhotoUrl: url,
-      });
+  //     await db.collection('users').doc(uid).update({
+  //       profilePhotoUrl: url,
+  //     });
 
-      return url;
-    } catch (error) {
-      console.log('Error @uploadProfilePhoto: ', error);
-    }
-  },
+  //     return url;
+  //   } catch (error) {
+  //     console.log('Error @uploadProfilePhoto: ', error);
+  //   }
+  // },
 
   getBlob: async (uri) => {
     return await new Promise((resolve, reject) => {

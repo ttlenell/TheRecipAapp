@@ -9,7 +9,7 @@ const UserProvider = (props) => {
     uid: '',
     isLoggedIn: null,
     // displayName: '',
-    profilePhotoUrl: 'default',
+    // profilePhotoUrl: 'default',
   });
 
   return (

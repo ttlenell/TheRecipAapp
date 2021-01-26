@@ -1,12 +1,17 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
+
+import Header from '../components/Header';
 
 export default function FavoritesScreen({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text>hej favorites</Text>
-    </View>
+    <SafeAreaView>
+      <Header />
+      <View style={styles.container}>
+        <Text>hej favorites</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 

@@ -45,6 +45,21 @@ const Firebase = {
     }
   },
 
+  createRecipe: async (recipe) => {
+    recipe.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+
+    firebase
+      .firestore()
+      .collection('Recipes')
+      .add(recipe)
+      .then((snapshot) => {
+        recipe.id = snapshot.id;
+        snapshot.set(recipe);
+      })
+      .then(() => addComplete(recipe))
+      .catch((error) => console.log(error));
+  },
+
   // uploadProfilePhoto: async (uri) => {
   //   const uid = Firebase.getCurrentUser().uid;
 
@@ -66,23 +81,23 @@ const Firebase = {
   //   }
   // },
 
-  getBlob: async (uri) => {
-    return await new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+  // getBlob: async (uri) => {
+  //   return await new Promise((resolve, reject) => {
+  //     const xhr = new XMLHttpRequest();
 
-      xhr.onload = () => {
-        resolve(xhr.response);
-      };
+  //     xhr.onload = () => {
+  //       resolve(xhr.response);
+  //     };
 
-      xhr.onerror = () => {
-        reject(new TypeError('Network request failed.'));
-      };
+  //     xhr.onerror = () => {
+  //       reject(new TypeError('Network request failed.'));
+  //     };
 
-      xhr.responseType = 'blob';
-      xhr.open('GET', uri, true);
-      xhr.send(null);
-    });
-  },
+  //     xhr.responseType = 'blob';
+  //     xhr.open('GET', uri, true);
+  //     xhr.send(null);
+  //   });
+  // },
 
   getUserInfo: async (uid) => {
     try {

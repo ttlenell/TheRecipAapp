@@ -11,7 +11,13 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
-      drawerContent={(props, navigation) => <DrawerContent {...props} />}>
+      drawerPosition="right"
+      drawerContent={(props) => (
+        <DrawerContent
+          {...props}
+          //  drawerPosition="right"
+        />
+      )}>
       <Drawer.Screen name="hej" component={BottomTabsNavigator} />
       <Drawer.Screen name="Search" component={BottomTabsNavigator} />
     </Drawer.Navigator>

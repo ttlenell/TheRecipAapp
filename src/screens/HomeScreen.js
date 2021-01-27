@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Header from '../components/Header';
+import FloatingActionBar from '../components/FloatingActionBar';
 
 //...
 export default function Home({navigation}) {
@@ -17,8 +18,14 @@ export default function Home({navigation}) {
     <SafeAreaView>
       <Header />
       <View style={styles.container}>
+        <FloatingActionBar
+          onPressFunction={() => {
+            navigation.navigate('CreateRecipe');
+            console.log('fab pressed');
+          }}
+        />
         <Text>HOMESCREEN</Text>
-        <FlatList />
+        {/* <FlatList /> */}
       </View>
     </SafeAreaView>
   );
@@ -35,7 +42,6 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderColor: 'black',
   },
-
   textstyle: {
     color: 'white',
     fontSize: 30,

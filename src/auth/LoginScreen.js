@@ -15,7 +15,6 @@ import {
 } from 'react-native';
 import {FirebaseContext} from '../context/FirebaseContext';
 import {UserContext} from '../context/UserContext';
-import {Button, Icon} from 'native-base';
 import LoginHeader from '../components/LoginHeader';
 
 // eslint-disable-next-line no-undef
@@ -59,13 +58,6 @@ export default Login = ({navigation}) => {
         <SafeAreaView style={styles.container}>
           <View style={styles.inner}>
             <LoginHeader />
-            {/* <Text style={styles.greeting}>The Recipe App</Text>
-            <View style={styles.imageLogo}>
-              <Image
-                style={{width: 250, height: 250, alignSelf: 'center'}}
-                source={require('../assets/images/login_image.jpg')}
-              />
-            </View> */}
 
             <View style={styles.form}>
               <View style={{marginTop: 32}}>

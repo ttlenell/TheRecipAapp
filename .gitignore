@@ -57,3 +57,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Firebase
+
+/src/config/firebase.js
+

@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
 import config from '../config/firebase';
+import {v1 as uuidv1} from 'uuid';
 
 const FirebaseContext = createContext();
 
@@ -43,21 +44,6 @@ const Firebase = {
     } catch (error) {
       console.log('Error @createUser: ', error.message);
     }
-  },
-
-  createRecipe: async (recipe) => {
-    recipe.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-
-    firebase
-      .firestore()
-      .collection('Recipes')
-      .add(recipe)
-      .then((snapshot) => {
-        recipe.id = snapshot.id;
-        snapshot.set(recipe);
-      })
-      .then(() => addComplete(recipe))
-      .catch((error) => console.log(error));
   },
 
   // uploadProfilePhoto: async (uri) => {

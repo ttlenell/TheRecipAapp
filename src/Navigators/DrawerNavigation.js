@@ -12,12 +12,8 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       drawerPosition="right"
-      drawerContent={(props) => (
-        <DrawerContent
-          {...props}
-          //  drawerPosition="right"
-        />
-      )}>
+      drawerStyle={{width: 320}}
+      drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="hej" component={BottomTabsNavigator} />
       <Drawer.Screen name="Search" component={BottomTabsNavigator} />
     </Drawer.Navigator>

@@ -19,8 +19,6 @@ export default function FloatingActionBar({onPressFunction}) {
 
 const styles = StyleSheet.create({
   button: {
-    // borderWidth: 1,
-    // borderColor: 'rgba(0,0,0,0.2)',
     flex: 1,
     width: 60,
     position: 'absolute',

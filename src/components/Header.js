@@ -12,7 +12,6 @@ export default function Header() {
         style={styles.headerMenu}
         onPress={() => navigation.toggleDrawer()}>
         <Icon name="menu" size={30} />
-        {/* <Text>Open drawer</Text> */}
       </TouchableOpacity>
     );
   }

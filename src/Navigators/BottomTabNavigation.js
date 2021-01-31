@@ -12,7 +12,7 @@ const tabBarOptions = {
   showLabel: true,
   style: {
     backgroundColor: '#222222',
-    paddingBottom: 12,
+    paddingBottom: 20,
   },
 };
 

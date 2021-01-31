@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {v1 as uuidv1} from 'uuid';
 
 export function addRecipe(recipe, addComplete) {
   recipe.createdAt = firebase.firestore.FieldValue.serverTimestamp();
@@ -30,5 +31,30 @@ export async function getRecipes(recipesRetreived) {
     recipeItem.id = doc.id;
     recipeList.unshift(recipeItem);
   });
-  streamsRetreived(recipeList);
+  recipesRetreived(recipeList);
+}
+
+export function updateRecipe(recipe, updateComplete) {
+  recipe.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+  console.log('Updating recipe in firebase');
+
+  firebase
+    .firestore()
+    .collection('Recipes')
+    .doc(recipe.id)
+    .set(recipe)
+    .then(() => updateComplete(recipe))
+    .catch((error) => console.log(error));
+}
+
+export function deleteRecipe(recipe, deleteComplete) {
+  console.log(recipe);
+
+  firebase
+    .firestore()
+    .collection('Recipes')
+    .doc(recipe.id)
+    .delete()
+    .then(() => deleteComplete())
+    .catch((error) => console.log(error));
 }

@@ -15,8 +15,6 @@ export default function LoginHeader() {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#3F57B4',
-
     padding: 10,
     flex: 1,
     marginBottom: 150,
@@ -24,11 +22,9 @@ const styles = StyleSheet.create({
 
   image: {
     alignSelf: 'center',
-    // marginTop: 50,
     width: 250,
     height: 250,
     borderRadius: 400 / 2,
-    // resizeMode: 'stretch',
   },
   greeting: {
     marginTop: 30,

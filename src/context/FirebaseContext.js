@@ -53,7 +53,13 @@ const Firebase = {
 
   getRecipes: async (recipes) => {
     const uid = Firebase.getCurrentUser().uid;
-    await db.collection('users').doc(uid).collection('recipes').get(recipes);
+    var recipes = [];
+    await db
+      .collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .get()
+      .then(() => recipes);
   },
 
   getUserInfo: async (uid) => {

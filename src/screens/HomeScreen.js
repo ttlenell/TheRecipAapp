@@ -45,7 +45,7 @@ export default function Home({navigation}) {
     // const recipes = [];
 
     try {
-      firebase.getRecipes();
+      firebase.getRecipes(recipes);
       console.log('fetching');
       console.log(recipes);
     } catch (error) {

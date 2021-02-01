@@ -28,7 +28,6 @@ export default Register = () => {
     setLoading(true);
 
     const user = {username, email, password};
-    // const user = {username, email, password, profilePhoto};
 
     try {
       const createdUser = await firebase.createUser(user);

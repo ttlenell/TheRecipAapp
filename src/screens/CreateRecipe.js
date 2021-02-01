@@ -1,19 +1,32 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, Text, FlatList} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, StyleSheet, Text, FlatList, TouchableOpacity} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import SaveRecipe from '../components/createRecipe/SaveRecipe';
+import {StackActions} from '@react-navigation/native';
+import {FirebaseContext} from '../context/FirebaseContext';
 
-// import {IngredientInput} from '../components/createRecipe/IngredientInput';
 import {IngredientInput} from '../components/createRecipe/IngredientInput';
 import RecipeInput from '../components/createRecipe/RecipeInput';
 
-export default function CreateRecipe() {
+export default function CreateRecipe({navigation}) {
   const [ingredients, setIngredients] = useState([]);
   const [recipeName, setRecipeName] = useState();
+  const firebase = useContext(FirebaseContext);
+
+  const addRecipeToFirebase = async () => {
+    const recipe = {recipeName, ingredients};
+
+    try {
+      firebase.addRecipe(recipe);
+      navigation.dispatch(StackActions.popToTop());
+    } catch (error) {
+      console.log('error saving to firebase', error);
+    }
+  };
 
   var recipeText = recipeName
     ? recipeName
     : 'Click the button below to change the name of the recipe!';
+
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -41,7 +54,13 @@ export default function CreateRecipe() {
           }
         />
         <IngredientInput setIngredient={setIngredients} />
-        <SaveRecipe />
+        <TouchableOpacity
+          style={styles.saveRecipe}
+          onPress={() => {
+            addRecipeToFirebase();
+          }}>
+          <Text>Save to firebase</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -71,5 +90,13 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 5,
     borderColor: 'black',
+  },
+  saveRecipe: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    alignItems: 'center',
+
+    width: 250,
   },
 });

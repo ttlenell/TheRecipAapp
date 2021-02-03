@@ -20,13 +20,3 @@ export default MainStackScreens = () => {
     </MainStack.Navigator>
   );
 };
-
-// return (
-//   <MainStack.Navigator
-//     tabBarOptions={tabBarOptions}
-//     screenOptions={screenOptions}>
-//     <MainStack.Screen name="Search" component={SearchScreen} />
-//     <MainStack.Screen name="Home" component={HomeScreen} />
-//     <MainStack.Screen name="Favorites" component={FavoritesScreen} />
-//   </MainStack.Navigator>
-// );

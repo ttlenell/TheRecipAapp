@@ -1,24 +1,25 @@
 import React, {useState} from 'react';
 import {
   View,
-  StyleSheet,
-  TextInput,
   Text,
+  StyleSheet,
   Modal,
-  Alert,
+  TextInput,
   TouchableHighlight,
 } from 'react-native';
 
-const RecipeInput = ({setRecipeName}) => {
-  const [textInput, setTextInput] = useState('');
+const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
+  const [cookingTextInput, setCookingTextInput] = useState('');
+  const [timer, setTimer] = useState(0);
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const toggleModalVisibility = () => {
     setModalVisible(!modalVisible);
   };
-
-  const addRecipeName = () => {
-    setRecipeName(textInput);
+  const addCookingInfo = () => {
+    setCookingText(cookingTextInput);
+    setTimerNumber(timer);
   };
 
   return (
@@ -33,11 +34,29 @@ const RecipeInput = ({setRecipeName}) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <TextInput
-              style={styles.modalText}
-              placeholder="recipe name.."
-              value={textInput}
-              onChangeText={(text) => setTextInput(text)}
-              autoCompleteType="off"
+              style={{
+                ...styles.modalText,
+                right: 10,
+                width: 200,
+              }}
+              placeholder="start here with instructions"
+              value={cookingTextInput}
+              onChangeText={(text) => setCookingTextInput(text)}
+              multiline={true}
+            />
+            <Text>Set minutes for timer </Text>
+            <TextInput
+              style={{
+                ...styles.modalText,
+                right: 10,
+                width: 80,
+                borderBottomWidth: 0.3,
+                borderBottomColor: 'black',
+              }}
+              placeholder="minutes.."
+              value={timer}
+              onChangeText={(number) => setTimer(number)}
+              keyboardType={'numeric'}
             />
             <View style={styles.modalRow}>
               <TouchableHighlight
@@ -51,7 +70,7 @@ const RecipeInput = ({setRecipeName}) => {
                 }}
                 onPress={() => {
                   toggleModalVisibility();
-                  addRecipeName();
+                  addCookingInfo();
                 }}>
                 <Text style={styles.textStyle}>Submit</Text>
               </TouchableHighlight>
@@ -73,20 +92,63 @@ const RecipeInput = ({setRecipeName}) => {
           </View>
         </View>
       </Modal>
-
       <TouchableHighlight
-        style={styles.openButton}
+        style={styles.addCookingInfoButton}
         onPress={() => {
           setModalVisible(true);
-          addRecipeName();
         }}>
-        <Text style={styles.textStyle}>Change recipe name</Text>
+        <Text style={{...styles.textStyle, fontSize: 15}}>
+          Add instructions
+        </Text>
       </TouchableHighlight>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  addCookingInfoButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 8,
+    bottom: 5,
+    left: 110,
+    width: 170,
+  },
+
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  modalButton: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    top: 110,
+    elevation: 2,
+    height: 55,
+    width: 100,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  modalText: {
+    marginBottom: 15,
+    fontSize: 20,
+    textAlign: 'center',
+  },
   centeredView: {
     flex: 0,
     justifyContent: 'center',
@@ -94,10 +156,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   modalView: {
-    top: 350,
-    height: 140,
+    top: 250,
+    height: 400,
     backgroundColor: 'white',
     borderRadius: 20,
+
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
@@ -111,32 +174,8 @@ const styles = StyleSheet.create({
   },
   modalRow: {
     flexDirection: 'row',
-  },
-  openButton: {
-    backgroundColor: '#2196F3',
-    borderRadius: 20,
-    padding: 8,
-    top: 630,
-    width: 170,
-    left: 110,
-  },
-  modalButton: {
-    backgroundColor: '#2196F3',
-    borderRadius: 20,
-    padding: 8,
-    top: 450,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 15,
-  },
-  modalText: {
-    marginBottom: 15,
-    fontSize: 20,
-    textAlign: 'center',
+    top: 150,
   },
 });
 
-export default RecipeInput;
+export default CookingInstructionsInput;

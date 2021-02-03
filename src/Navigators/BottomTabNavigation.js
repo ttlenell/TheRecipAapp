@@ -33,10 +33,6 @@ const screenOptions = ({route}) => ({
         iconName = 'heart-o';
         break;
 
-      // case 'Profile':
-      //   iconName = 'ios-person';
-      //   break;
-
       default:
         iconName = 'home';
     }

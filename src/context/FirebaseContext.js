@@ -48,18 +48,34 @@ const Firebase = {
 
   addRecipe: async (recipe) => {
     const uid = Firebase.getCurrentUser().uid;
-    await db.collection('users').doc(uid).collection('recipes').add(recipe);
-  },
-
-  getRecipes: async (recipes) => {
-    const uid = Firebase.getCurrentUser().uid;
-    var recipes = [];
     await db
       .collection('users')
       .doc(uid)
       .collection('recipes')
-      .get()
-      .then(() => recipes);
+      .add(recipe)
+      .then((snapshot) => {
+        id = snapshot.id;
+      });
+  },
+
+  getRecipes: async () => {
+    const uid = Firebase.getCurrentUser().uid;
+    let querySnapshot = await db
+      .collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .get();
+
+    let recipes = [];
+
+    querySnapshot.forEach((doc) => {
+      // console.log('from firebaseContext:', doc.id, ' => ', doc.data());
+      recipes.push({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+    return recipes;
   },
 
   getUserInfo: async (uid) => {

@@ -1,15 +1,26 @@
 /* eslint-disable no-undef */
-import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, SafeAreaView, StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/Header';
+import RecipesList from '../components/searchRecipes/RecipesList';
+import SearchBar from '../components/searchRecipes/SearchBar';
+import useRecipes from '../hooks/useRecipes';
 
 export default function SearchScreen({navigation}) {
+  const [term, setTerm] = useState('');
+  const [searchAPI, recipes] = useRecipes();
+
   return (
     <SafeAreaView>
       <Header />
-      <View style={styles.container}>
-        <Text>hej search</Text>
-      </View>
+      <SearchBar
+        term={term}
+        onTermChange={setTerm}
+        onTermSubmit={() => searchAPI(term)}
+      />
+      <RecipesList title="Recipes from Tasty API" />
+      <ScrollView></ScrollView>
+      <View style={styles.container}>{/* <Text>hej search</Text> */}</View>
     </SafeAreaView>
   );
 }

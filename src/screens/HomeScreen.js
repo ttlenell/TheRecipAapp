@@ -18,71 +18,60 @@ import FloatingActionBar from '../components/FloatingActionBar';
 //...
 export default function Home({navigation}) {
   const firebase = useContext(FirebaseContext);
-  const [recipes, setRecipes] = useState([]);
+  const [recipesList, setRecipesList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  if (loading) {
-    return <ActivityIndicator size="large" color="black" />;
+  {
+    loading && <ActivityIndicator size="large" color="black" />;
   }
 
-  // useEffect(() => {
-  //   const subscriber = firebase.getRecipes().onSnapshot((querySnapshot) => {
-  //     const recipes = [];
-
-  //     querySnapshot.forEach((documentSnapshot) => {
-  //       recipes.push({
-  //         title: documentSnapshot.data().name,
-  //         key: documentSnapshot.id,
-  //       });
-  //     });
-  //     setRecipes(recipes);
-  //     setLoading(false);
-  //   });
-  //   return () => subscriber();
-  // }, []);
-
-  const getRecipesFromFirebase = async (recipes) => {
-    // const recipes = [];
-
+  const getRecipesFromFirebase = async () => {
     try {
-      firebase.getRecipes(recipes);
+      const recipes = await firebase.getRecipes();
+      setRecipesList(recipes);
       console.log('fetching');
-      console.log(recipes);
+      console.log('from homescreen', recipes);
     } catch (error) {
       console.log('error fetching recipes from firebase', error);
     }
   };
 
+  useEffect(() => {
+    firebase.getRecipes().then(setRecipesList).catch(console.log('error'));
+  }, []);
+
   return (
     <SafeAreaView>
       <Header />
       <View style={styles.container}>
-        <Button
+        {/* <Button
           title="fetch"
           onPress={() => {
             getRecipesFromFirebase();
           }}
-        />
+        /> */}
+        <View style={styles.fab}>
+          <FloatingActionBar
+            onPressFunction={() => {
+              navigation.navigate('CreateRecipe');
+              console.log('fab pressed');
+            }}
+          />
+        </View>
         <FlatList
           style={styles.flatList}
-          data={recipes}
-          keyExtractor={({item, index}) => {
-            return index;
-          }}
+          data={recipesList}
+          keyExtractor={(item) => item.key}
           renderItem={({item}) => (
-            <Text styles={styles.flatlistItems}>{item.name}</Text>
+            <Text style={styles.flatListItems}>
+              {item.recipeName}
+              {/* {item.id} */}
+            </Text>
           )}
           ListEmptyComponent={
             <Text style={styles.textstyle}>No recipes added to firebase</Text>
           }
         />
-        <FloatingActionBar
-          onPressFunction={() => {
-            navigation.navigate('CreateRecipe');
-            console.log('fab pressed');
-          }}
-        />
-        <Text>HOMESCREEN</Text>
       </View>
     </SafeAreaView>
   );
@@ -90,14 +79,18 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     height: '100%',
-    // flexDirection: 'column',
-    // marginHorizontal: 70,
+    width: '100%',
+    zIndex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 10,
     borderColor: 'black',
+  },
+  fab: {
+    top: 400,
+
+    zIndex: 2,
   },
   textstyle: {
     color: 'black',
@@ -106,11 +99,15 @@ const styles = StyleSheet.create({
   },
   flatList: {
     width: 350,
+    borderColor: 'black',
+    borderWidth: 2,
+    padding: 10,
   },
   flatListItems: {
-    fontSize: 20,
+    fontSize: 40,
     borderWidth: 3,
     borderRadius: 5,
     borderColor: 'black',
+    marginTop: 10,
   },
 });

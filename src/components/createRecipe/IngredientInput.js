@@ -178,7 +178,7 @@ export const IngredientInput = ({setIngredient}) => {
         onPress={() => {
           setModalVisible(true);
         }}>
-        <Text style={{...styles.textStyle, fontSize: 20}}>Add ingredient</Text>
+        <Text style={{...styles.textStyle, fontSize: 15}}>Add ingredient</Text>
       </TouchableHighlight>
     </View>
   );
@@ -230,12 +230,13 @@ const styles = StyleSheet.create({
   },
   addIngredientButton: {
     backgroundColor: '#2196F3',
-    borderRadius: 20,
-    padding: 7,
+    alignItems: 'center',
+    width: 170,
     elevation: 2,
-    height: 70,
-    width: 120,
-    bottom: 50,
+    bottom: 0,
+    left: 110,
+    borderRadius: 20,
+    padding: 8,
   },
   textStyle: {
     color: 'white',

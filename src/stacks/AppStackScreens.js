@@ -20,18 +20,3 @@ export default AppStackScreens = () => {
     <AuthStackScreens />
   );
 };
-
-//   // <AppStack.Navigator headerMode="none">
-//   user.isLoggedIn === null ? (
-//     <LoadingScreen />
-//   ) : // <AppStack.Screen name="Loading" component={LoadingScreen} />
-//   user.isLoggedIn ? (
-//     <MainStackScreens />
-//   ) : (
-//     // <AppStack.Screen name="Main" component={MainStackScreens} />
-//     <AuthStackScreens />
-//     // <AppStack.Screen name="Auth" component={AuthStackScreens} />
-//   )
-// );
-// // </AppStack.Navigator>
-// //   );

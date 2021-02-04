@@ -17,7 +17,7 @@ export default function Header() {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This is a header</Text>
+      <Text style={styles.title}>The recipe app</Text>
       <DrawerScreen />
     </View>
   );
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     height: 80,
     paddingTop: 0,
-    backgroundColor: 'lightblue',
+    backgroundColor: '#8490B8',
     bottom: 0,
     marginBottom: 0,
     flexDirection: 'row',

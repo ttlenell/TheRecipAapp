@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
 import config from '../config/firebase';
-import {v1 as uuidv1} from 'uuid';
 
 const FirebaseContext = createContext();
 
@@ -76,6 +75,28 @@ const Firebase = {
       });
     });
     return recipes;
+  },
+
+  showDisplayName: async (user) => {
+    try {
+      const uid = Firebase.getCurrentUser().uid;
+
+      await db.collection('users').doc(uid).get();
+    } catch (error) {
+      console.log('error fetching logged in user', error);
+    }
+    return user;
+  },
+  deleteRecipe: async (item) => {
+    const uid = Firebase.getCurrentUser().uid;
+    var recipe = item.id;
+    await db
+      .collection('users')
+      .doc(uid)
+      .collection('recipes')
+      .doc(recipe)
+      .delete();
+    console.log('deleted', recipe, 'from firebase');
   },
 
   getUserInfo: async (uid) => {

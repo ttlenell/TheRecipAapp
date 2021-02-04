@@ -8,6 +8,7 @@ import 'react-native-gesture-handler';
 import {createStackNavigator} from '@react-navigation/stack';
 import DrawerNavigator from '../navigators/DrawerNavigation';
 import CreateRecipeScreen from '../screens/CreateRecipe';
+import RecipeDetailScreen from '../screens/RecipeDetailScreen';
 
 // eslint-disable-next-line no-undef
 export default MainStackScreens = () => {
@@ -17,6 +18,7 @@ export default MainStackScreens = () => {
     <MainStack.Navigator headerMode="none">
       <MainStack.Screen name="HomeScreen" component={DrawerNavigator} />
       <MainStack.Screen name="CreateRecipe" component={CreateRecipeScreen} />
+      <MainStack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
     </MainStack.Navigator>
   );
 };

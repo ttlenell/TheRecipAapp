@@ -22,7 +22,6 @@ export default Register = () => {
   // const [profilePhoto, setProfilePhoto] = useState();
   const firebase = useContext(FirebaseContext);
   const [_, setUser] = useContext(UserContext);
-  const [displayName, setDisplayName] = useState();
 
   const RegisterUser = async () => {
     setLoading(true);

@@ -9,7 +9,7 @@ export default function FloatingActionBar({onPressFunction}) {
         <Icon
           name="add-circle"
           size={75}
-          color={'red'}
+          color={'#8490B8'}
           style={{margin: -6, bottom: 3, left: 1}}
         />
       </TouchableOpacity>

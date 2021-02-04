@@ -54,9 +54,10 @@ const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
                 borderBottomColor: 'black',
               }}
               placeholder="minutes.."
+              numeric
               value={timer}
-              onChangeText={(number) => setTimer(number)}
-              keyboardType={'numeric'}
+              onChangeText={(number) => setTimer(parseInt(number))}
+              keyboardType={'number-pad'}
             />
             <View style={styles.modalRow}>
               <TouchableHighlight

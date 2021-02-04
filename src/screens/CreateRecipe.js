@@ -17,7 +17,7 @@ export default function CreateRecipe({navigation}) {
   const firebase = useContext(FirebaseContext);
 
   const addRecipeToFirebase = async () => {
-    const recipe = {recipeName, ingredients, id};
+    const recipe = {recipeName, ingredients, id, cookingText, timer};
 
     try {
       firebase.addRecipe(recipe);
@@ -27,7 +27,7 @@ export default function CreateRecipe({navigation}) {
     }
   };
 
-  var timerSet = timer ? timer : 'Your set timer will show here';
+  var timerSet = timer ? timer + ' minutes' : 'Your set timer will show here';
 
   var cookingTextBox = cookingText
     ? cookingText
@@ -42,7 +42,6 @@ export default function CreateRecipe({navigation}) {
       <Text style={styles.recipeName}>{recipeText}</Text>
       <RecipeInput setRecipeName={setRecipeName} />
 
-      {/* <Text style={styles.textstyle}>Ingredients:</Text> */}
       <View style={styles.flatList}>
         <FlatList
           data={ingredients}
@@ -75,12 +74,12 @@ export default function CreateRecipe({navigation}) {
       </View>
       <View style={styles.timer}>
         <Text style={{...styles.textStyle, fontSize: 20, color: 'black'}}>
-          Timer set to:{timerSet}
+          Timer set to: {timerSet}
         </Text>
       </View>
       <IngredientInput setIngredient={setIngredients} />
       <CookingInstructionsInput
-        setCookingInstructions={setCookingText}
+        setCookingText={setCookingText}
         setTimerNumber={setTimer}
       />
       <TouchableOpacity

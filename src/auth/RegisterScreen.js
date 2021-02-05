@@ -88,7 +88,7 @@ export default Register = () => {
             padding: 10,
             marginTop: 30,
             justifyContent: 'center',
-            backgroundColor: 'green',
+            backgroundColor: '#8490B8',
           }}
           onPress={() => RegisterUser()}>
           <Text
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   textinput: {
     fontSize: 20,
     fontWeight: '300',
-    borderColor: 'green',
+    borderColor: '#8490B8',
     borderWidth: 3,
     borderRadius: 15,
     padding: 10,

@@ -83,6 +83,8 @@ export const IngredientInput = ({setIngredient}) => {
                   {label: 'deciliter', value: 'deciliter'},
                   {label: 'centilter', value: 'centiliter'},
                   {label: 'mililter', value: 'mililiter'},
+                  {label: 'kilogram', value: 'kilogram'},
+                  {label: 'gram', value: 'gram'},
                   {label: 'pcs', value: 'pcs'},
                 ]}
                 defaultIndex={0}
@@ -105,7 +107,6 @@ export const IngredientInput = ({setIngredient}) => {
                 items={[
                   {label: 'Meat🍗', value: 'Meat'},
                   {label: 'Chicken🐤', value: 'Chicken'},
-                  {label: 'Bacon🥓', value: 'Bacon'},
                   {label: 'Pork🐷', value: 'Meat'},
                   {label: 'Pasta🍝', value: 'Pasta'},
                   {label: 'Rice🍚', value: 'Rice'},
@@ -237,6 +238,14 @@ const styles = StyleSheet.create({
     left: 110,
     borderRadius: 20,
     padding: 8,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   textStyle: {
     color: 'white',

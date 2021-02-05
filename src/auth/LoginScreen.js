@@ -61,11 +61,10 @@ export default Login = ({navigation}) => {
 
             <View style={styles.form}>
               <View style={{marginTop: 32}}>
-                <Text style={styles.inputTitle}>Email-adress</Text>
+                <Text style={styles.inputTitle}>Email-address</Text>
                 <TextInput
                   style={styles.input}
                   placeholder={'Email'}
-                  // inlineImageLeft={'account'}
                   keyboardType="default"
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -75,7 +74,7 @@ export default Login = ({navigation}) => {
                 />
               </View>
               <View style={{marginTop: 32}}>
-                <Text style={styles.inputTitle}>Lösenord</Text>
+                <Text style={styles.inputTitle}>Password</Text>
                 <TextInput
                   style={styles.input}
                   placeholder={'Password'}
@@ -84,6 +83,7 @@ export default Login = ({navigation}) => {
                   autoCapitalize="none"
                   autoCorrect={false}
                   autoCompleteType="off"
+                  secureTextEntry={true}
                   onChangeText={(text) => setPassword(text)}
                   value={password}
                 />
@@ -94,7 +94,7 @@ export default Login = ({navigation}) => {
                 borderRadius: 20,
                 padding: 10,
                 justifyContent: 'center',
-                backgroundColor: 'green',
+                backgroundColor: '#8490B8',
               }}
               onPress={() => signIn()}>
               <Text
@@ -103,7 +103,7 @@ export default Login = ({navigation}) => {
                   color: 'white',
                   fontSize: 25,
                 }}>
-                Logga in
+                Sign in
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -113,10 +113,10 @@ export default Login = ({navigation}) => {
               }}
               onPress={() => navigation.navigate('Register')}>
               <Text style={{color: 'black', fontSize: 13}}>
-                Har du inget konto?
+                Don't have an account?
                 <Text style={{fontWeight: '500', color: '#E9446A'}}>
                   {' '}
-                  Registrera dig här
+                  Register here
                 </Text>
                 <Text
                   style={{
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 30,
-    backgroundColor: '#E9446A',
+    backgroundColor: '#8490B8',
     borderRadius: 4,
     height: 52,
     alignItems: 'center',

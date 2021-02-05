@@ -32,7 +32,7 @@ export default LoadingScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>Please wait</Text>
-      <Text style={styles.text2}>Loading....</Text>
+      <Text style={styles.text2}>Loading the recipe app....</Text>
       <ActivityIndicator
         size="large"
         color=" black"

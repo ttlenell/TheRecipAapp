@@ -58,7 +58,7 @@ const RecipeDetailScreen = ({route}) => {
                 <View>
                   <Text style={styles.cookingText}>
                     {item.category}
-                    {'           '}
+                    {'          '}
                     <Text style={{alignItems: 'flex-end'}}>{item.name}</Text>
                   </Text>
                   <View style={{alignItems: 'flex-end'}}>
@@ -109,14 +109,14 @@ const styles = StyleSheet.create({
   },
   recipeName: {
     color: 'black',
-    top: 200,
+    top: 220,
     fontSize: 25,
     textAlign: 'center',
     fontStyle: 'italic',
   },
   flatList: {
     width: 350,
-    bottom: 100,
+    bottom: 80,
     height: 350,
     borderColor: 'black',
     borderWidth: 2,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   cookingView: {
     marginBottom: 20,
-    bottom: 100,
+    bottom: 80,
   },
   cookingText: {
     fontSize: 20,

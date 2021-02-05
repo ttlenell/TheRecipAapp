@@ -20,9 +20,6 @@ export default function DrawerContent(props) {
 
   useEffect(() => {
     firebase.showDisplayName().then(setDisplayName).catch(console.log('error'));
-    // firebase.showDisplayName().then((value) => {
-    //   console.log(value);
-    // });
   }, []);
   return (
     <View style={styles.container}>

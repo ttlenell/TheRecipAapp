@@ -108,7 +108,7 @@ export default function Home({navigation}) {
                           onPress={() =>
                             Alert.alert(
                               'Are you sure you want to remove this recipe?',
-                              'This cant be regretted',
+                              'This cannot be undone',
                               [
                                 {
                                   text: 'Cancel',

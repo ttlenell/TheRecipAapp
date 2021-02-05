@@ -53,7 +53,7 @@ const RecipeInput = ({setRecipeName}) => {
                   toggleModalVisibility();
                   addRecipeName();
                 }}>
-                <Text style={styles.textStyle}>Submit</Text>
+                <Text style={{...styles.textStyle, fontSize: 20}}>Submit</Text>
               </TouchableHighlight>
               <TouchableHighlight
                 style={{
@@ -67,7 +67,7 @@ const RecipeInput = ({setRecipeName}) => {
                 onPress={() => {
                   toggleModalVisibility();
                 }}>
-                <Text style={styles.textStyle}>Close</Text>
+                <Text style={{...styles.textStyle, fontSize: 20}}>Close</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   modalView: {
-    top: 350,
-    height: 140,
+    top: 250,
+    height: 250,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
@@ -119,12 +119,28 @@ const styles = StyleSheet.create({
     top: 630,
     width: 170,
     left: 110,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   modalButton: {
     backgroundColor: '#2196F3',
     borderRadius: 20,
-    padding: 8,
+    padding: 10,
     top: 450,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   textStyle: {
     color: 'white',
@@ -133,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 110,
     fontSize: 20,
     textAlign: 'center',
   },

@@ -120,13 +120,21 @@ const styles = StyleSheet.create({
     bottom: 5,
     left: 110,
     width: 170,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
 
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 15,
+    fontSize: 20,
   },
   modalButton: {
     backgroundColor: '#F194FF',
@@ -137,6 +145,7 @@ const styles = StyleSheet.create({
     height: 55,
     width: 100,
     borderWidth: 0.7,
+    alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -145,6 +154,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+
   modalText: {
     marginBottom: 15,
     fontSize: 20,

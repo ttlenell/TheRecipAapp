@@ -151,5 +151,13 @@ const styles = StyleSheet.create({
     width: 170,
     top: 0,
     left: 110,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
 });

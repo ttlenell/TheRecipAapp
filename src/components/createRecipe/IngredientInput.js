@@ -40,7 +40,6 @@ export const IngredientInput = ({setIngredient}) => {
 
   const checkTextInput = () => {
     if (!textInput.trim()) {
-      alert('Ingredient name cannot be empty');
       toggleModalVisibility();
       return;
     }
@@ -63,15 +62,9 @@ export const IngredientInput = ({setIngredient}) => {
               value={textInput}
               onChangeText={(text) => setTextInput(text)}
             />
-            <View style={{flexDirection: 'row', zIndex: 2}}>
+            <View style={styles.amountView}>
               <TextInput
-                style={{
-                  ...styles.modalText,
-                  right: 10,
-                  width: 80,
-                  borderBottomWidth: 0.3,
-                  borderBottomColor: 'black',
-                }}
+                style={styles.amountModalText}
                 placeholder="amount"
                 value={amount}
                 onChangeText={(text) => setAmount(text)}
@@ -90,19 +83,19 @@ export const IngredientInput = ({setIngredient}) => {
                 defaultIndex={0}
                 defaultNull
                 placeholder="Measure"
-                containerStyle={{width: 200, height: 70}}
-                dropDownStyle={{width: 200}}
+                containerStyle={styles.measureContainer}
+                dropDownStyle={styles.width200}
                 dropDownMaxHeight={270}
-                activeLabelStyle={{color: 'green'}}
-                placeholderStyle={{color: 'black'}}
-                selectedLabelStyle={{color: 'green'}}
-                style={{marginBottom: 20}}
+                activeLabelStyle={styles.green}
+                placeholderStyle={styles.black}
+                selectedLabelStyle={styles.green}
+                style={styles.marginBottom20}
                 onChangeItem={(item) => {
                   setMeasure(item.value);
                 }}
               />
             </View>
-            <View style={{zIndex: 1}}>
+            <View style={styles.zIndex1}>
               <DropDownPicker
                 items={[
                   {label: 'Meat🍗', value: 'Meat'},
@@ -119,17 +112,13 @@ export const IngredientInput = ({setIngredient}) => {
                 defaultIndex={0}
                 defaultNull
                 placeholder="Choose a category"
-                containerStyle={{width: 150, height: 70}}
-                dropDownStyle={{width: 200, left: -25}}
+                containerStyle={styles.categoryContainer}
+                dropDownStyle={styles.categoryDropDown}
                 dropDownMaxHeight={340}
-                style={{
-                  width: 200,
-                  right: 25,
-                  marginBottom: 20,
-                }}
-                activeLabelStyle={{color: 'green'}}
-                placeholderStyle={{color: 'black'}}
-                selectedLabelStyle={{color: 'green'}}
+                style={styles.categoryStyle}
+                activeLabelStyle={styles.green}
+                placeholderStyle={styles.black}
+                selectedLabelStyle={styles.green}
                 onChangeItem={(item) => {
                   setCategory(item.value);
                 }}
@@ -138,12 +127,7 @@ export const IngredientInput = ({setIngredient}) => {
 
             <View style={styles.modalRow}>
               <TouchableHighlight
-                style={{
-                  ...styles.openButton,
-                  backgroundColor: '#2196F3',
-
-                  right: 25,
-                }}
+                style={styles.submitButton}
                 onPress={() => {
                   toggleModalVisibility();
                   addIngredient();
@@ -156,14 +140,7 @@ export const IngredientInput = ({setIngredient}) => {
                 <Text style={styles.textStyle}>Submit</Text>
               </TouchableHighlight>
               <TouchableHighlight
-                style={{
-                  ...styles.openButton,
-                  backgroundColor: '#2196F3',
-
-                  left: 45,
-                  borderColor: 'black',
-                  borderWidth: 0.7,
-                }}
+                style={styles.closeButton}
                 onPress={() => {
                   toggleModalVisibility();
                 }}>
@@ -179,7 +156,7 @@ export const IngredientInput = ({setIngredient}) => {
         onPress={() => {
           setModalVisible(true);
         }}>
-        <Text style={{...styles.textStyle, fontSize: 15}}>Add ingredient</Text>
+        <Text style={styles.addIngredientText}>Add ingredient</Text>
       </TouchableHighlight>
     </View>
   );
@@ -213,10 +190,46 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   openButton: {
-    backgroundColor: '#F194FF',
+    backgroundColor: '#2196F3',
     borderRadius: 20,
     padding: 10,
     top: 110,
+    elevation: 2,
+    height: 55,
+    width: 100,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  submitButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    top: 110,
+    right: 25,
+    elevation: 2,
+    height: 55,
+    width: 100,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  closeButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    top: 110,
+    left: 45,
     elevation: 2,
     height: 55,
     width: 100,
@@ -253,9 +266,71 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
   },
+  addIngredientText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+  },
   modalText: {
     marginBottom: 15,
     fontSize: 20,
     textAlign: 'center',
+  },
+  amountModalText: {
+    right: 10,
+    width: 80,
+    marginBottom: 15,
+    fontSize: 20,
+    textAlign: 'center',
+    borderBottomWidth: 0.3,
+    borderBottomColor: 'black',
+  },
+  amountView: {
+    flexDirection: 'row',
+    zIndex: 2,
+  },
+  green: {
+    color: 'green',
+  },
+  black: {
+    color: 'black',
+  },
+  zIndex1: {
+    zIndex: 1,
+  },
+  width200: {
+    width: 200,
+  },
+  measureContainer: {
+    width: 200,
+    height: 70,
+  },
+  marginBottom20: {
+    marginBottom: 20,
+  },
+  categoryContainer: {
+    width: 150,
+    height: 70,
+  },
+  categoryDropDown: {
+    width: 200,
+    left: -25,
+  },
+
+  categoryStyle: {
+    width: 200,
+    right: 25,
+    marginBottom: 20,
+  },
+
+  ingredientClose: {
+    backgroundColor: '#2196F3',
+    left: 45,
+    borderColor: 'black',
+    borderWidth: 0.7,
+  },
+  right25: {
+    right: 25,
   },
 });

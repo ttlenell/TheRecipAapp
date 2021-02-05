@@ -1,27 +1,18 @@
 import React, {useContext, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
-import {Button, Icon} from 'native-base';
+import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {Button} from 'native-base';
 
 import {FirebaseContext} from '../context/FirebaseContext';
 import {UserContext} from '../context/UserContext';
 
-// eslint-disable-next-line no-undef
-export default Register = () => {
-  // }
-
+const Register = () => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [loading, setLoading] = useState(false);
-  // const [profilePhoto, setProfilePhoto] = useState();
+  const [, setLoading] = useState(false);
+
   const firebase = useContext(FirebaseContext);
-  const [_, setUser] = useContext(UserContext);
+  const [, setUser] = useContext(UserContext);
 
   const RegisterUser = async () => {
     setLoading(true);
@@ -41,15 +32,8 @@ export default Register = () => {
 
   return (
     <View style={styles.container}>
-      <View style={{padding: 10, marginLeft: 50}}>
-        <Text
-          style={{
-            fontSize: 50,
-            textAlign: 'center',
-            fontWeight: '200',
-          }}>
-          Register{' '}
-        </Text>
+      <View style={styles.registerTextView}>
+        <Text style={styles.registerText}>Register</Text>
       </View>
 
       <View style={styles.forms}>
@@ -82,23 +66,8 @@ export default Register = () => {
           autoCompleteType="off"
         />
 
-        <Button
-          style={{
-            borderRadius: 20,
-            padding: 10,
-            marginTop: 30,
-            justifyContent: 'center',
-            backgroundColor: '#8490B8',
-          }}
-          onPress={() => RegisterUser()}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: 'white',
-              fontSize: 25,
-            }}>
-            Sign Up
-          </Text>
+        <Button style={styles.registerUserStyle} onPress={() => RegisterUser()}>
+          <Text style={styles.registerUserText}>Sign Up</Text>
         </Button>
       </View>
     </View>
@@ -124,4 +93,29 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 20,
   },
+  registerText: {
+    fontSize: 50,
+    textAlign: 'center',
+    fontWeight: '200',
+  },
+
+  registerTextView: {
+    padding: 10,
+    marginLeft: 50,
+  },
+
+  registerUserStyle: {
+    borderRadius: 20,
+    padding: 10,
+    marginTop: 30,
+    justifyContent: 'center',
+    backgroundColor: '#8490B8',
+  },
+  registerUserText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,
+  },
 });
+
+export default Register;

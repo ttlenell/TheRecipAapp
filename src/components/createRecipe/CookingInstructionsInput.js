@@ -24,21 +24,11 @@ const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
 
   return (
     <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <TextInput
-              style={{
-                ...styles.modalText,
-                right: 10,
-                width: 200,
-              }}
+              style={styles.textInput}
               placeholder="start here with instructions"
               value={cookingTextInput}
               onChangeText={(text) => setCookingTextInput(text)}
@@ -46,13 +36,7 @@ const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
             />
             <Text>Set minutes for timer </Text>
             <TextInput
-              style={{
-                ...styles.modalText,
-                right: 10,
-                width: 80,
-                borderBottomWidth: 0.3,
-                borderBottomColor: 'black',
-              }}
+              style={styles.minuteInput}
               placeholder="minutes.."
               numeric
               value={timer}
@@ -61,14 +45,7 @@ const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
             />
             <View style={styles.modalRow}>
               <TouchableHighlight
-                style={{
-                  ...styles.modalButton,
-                  backgroundColor: '#2196F3',
-                  top: 15,
-                  right: 20,
-                  borderColor: 'black',
-                  borderWidth: 0.7,
-                }}
+                style={styles.submitButton}
                 onPress={() => {
                   toggleModalVisibility();
                   addCookingInfo();
@@ -76,14 +53,7 @@ const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
                 <Text style={styles.textStyle}>Submit</Text>
               </TouchableHighlight>
               <TouchableHighlight
-                style={{
-                  ...styles.modalButton,
-                  backgroundColor: '#2196F3',
-                  top: 15,
-                  left: 20,
-                  borderColor: 'black',
-                  borderWidth: 0.7,
-                }}
+                style={styles.closeButton}
                 onPress={() => {
                   toggleModalVisibility();
                 }}>
@@ -98,9 +68,7 @@ const CookingInstructionsInput = ({setCookingText, setTimerNumber}) => {
         onPress={() => {
           setModalVisible(true);
         }}>
-        <Text style={{...styles.textStyle, fontSize: 15}}>
-          Add instructions
-        </Text>
+        <Text style={styles.addInstructionsText}>Add instructions</Text>
       </TouchableHighlight>
     </View>
   );
@@ -129,6 +97,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  addInstructionsText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+  },
 
   textStyle: {
     color: 'white',
@@ -137,7 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   modalButton: {
-    backgroundColor: '#F194FF',
+    backgroundColor: '#2196F3',
     borderRadius: 20,
     padding: 10,
     top: 110,
@@ -154,8 +128,68 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  submitButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+
+    elevation: 2,
+    height: 55,
+    width: 100,
+    borderWidth: 0.7,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    top: 15,
+    right: 20,
+    borderColor: 'black',
+  },
+  closeButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+
+    elevation: 2,
+    height: 55,
+    width: 100,
+    borderWidth: 0.7,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    top: 15,
+    left: 20,
+    borderColor: 'black',
+  },
 
   modalText: {
+    marginBottom: 15,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  textInput: {
+    marginBottom: 15,
+    fontSize: 20,
+    textAlign: 'center',
+    right: 10,
+    width: 200,
+  },
+  minuteInput: {
+    right: 10,
+    width: 80,
+    borderBottomWidth: 0.3,
+    borderBottomColor: 'black',
     marginBottom: 15,
     fontSize: 20,
     textAlign: 'center',

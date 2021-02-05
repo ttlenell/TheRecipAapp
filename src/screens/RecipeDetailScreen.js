@@ -26,7 +26,8 @@ const RecipeDetailScreen = ({route}) => {
         {
           text: 'Yes!',
           onPress: () => {
-            useKeepAwake, console.log('keep awake activated!');
+            useKeepAwake;
+            console.log('keep awake activated!!!');
           },
         },
       ],
@@ -42,7 +43,7 @@ const RecipeDetailScreen = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <View style={{bottom: 300}}>
+      <View style={styles.recipeNameView}>
         <Text style={styles.recipeName}>{item.recipeName}</Text>
       </View>
       <View style={styles.flatList}>
@@ -51,6 +52,7 @@ const RecipeDetailScreen = ({route}) => {
         </View>
         <FlatList
           data={item.ingredients}
+          // ESlint wants me to remove "item" but i clearly need it to work?
           keyExtractor={(item) => item.key}
           renderItem={({item}) => {
             return (
@@ -59,9 +61,9 @@ const RecipeDetailScreen = ({route}) => {
                   <Text style={styles.cookingText}>
                     {item.category}
                     {'          '}
-                    <Text style={{alignItems: 'flex-end'}}>{item.name}</Text>
+                    <Text style={styles.alignItemsFlexEnd}>{item.name}</Text>
                   </Text>
-                  <View style={{alignItems: 'flex-end'}}>
+                  <View style={styles.alignItemsFlexEnd}>
                     <Text>
                       {item.amount} {item.measure}
                     </Text>
@@ -77,17 +79,17 @@ const RecipeDetailScreen = ({route}) => {
       </View>
 
       <View style={styles.timerView}>
-        <Text style={{fontSize: 20}}>
+        <Text style={styles.timerText1}>
           The timer is set to:{' '}
-          <Text style={{fontWeight: 'bold'}}>{item.timer}</Text> minutes
+          <Text style={styles.timerText2}>{item.timer}</Text> minutes
         </Text>
         <TouchableOpacity
           style={styles.timerButton}
           onPress={() => setIsRunning((prev) => !prev)}>
-          <Text style={{fontSize: 25}}>{timerTextBox}</Text>
+          <Text style={styles.timerText3}>{timerTextBox}</Text>
         </TouchableOpacity>
         <CountDown
-          style={{top: 1}}
+          style={styles.top5}
           onFinish={() => alert('Timer ended!')}
           timeToShow={['M', 'S']}
           size={30}
@@ -106,6 +108,22 @@ const styles = StyleSheet.create({
     zIndex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  recipeNameView: {
+    bottom: 300,
+  },
+  timerText1: {
+    fontSize: 20,
+  },
+  timerText2: {
+    fontWeight: 'bold',
+  },
+  timerText3: {
+    fontSize: 25,
+  },
+  top5: {top: 5},
+  alignItemsFlexEnd: {
+    alignItems: 'flex-end',
   },
   recipeName: {
     color: 'black',

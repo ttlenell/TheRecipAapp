@@ -7,9 +7,8 @@ import Header from '../components/Header';
 export default function FavoritesScreen({navigation}) {
   return (
     <Fragment>
-      <SafeAreaView
-        style={{flex: 0, backgroundColor: '#8490B8'}}></SafeAreaView>
-      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <SafeAreaView style={styles.safeAreaView1} />
+      <SafeAreaView style={safeAreaView2}>
         <Header />
         <View style={styles.container}>
           <Text>hej favorites</Text>
@@ -23,5 +22,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+  },
+  safeAreaView1: {
+    flex: 0,
+    backgroundColor: '#8490B8',
+  },
+  safeAreaView2: {
+    flex: 1,
+    backgroundColor: 'white',
   },
 });

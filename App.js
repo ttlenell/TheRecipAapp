@@ -6,8 +6,7 @@ import {FirebaseProvider} from './src/context/FirebaseContext';
 
 import AppStackScreens from './src/stacks/AppStackScreens';
 
-// eslint-disable-next-line no-undef
-export default App = () => {
+const App = () => {
   return (
     <FirebaseProvider>
       <UserProvider>
@@ -18,3 +17,5 @@ export default App = () => {
     </FirebaseProvider>
   );
 };
+
+export default App;

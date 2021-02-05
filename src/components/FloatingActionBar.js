@@ -10,7 +10,7 @@ export default function FloatingActionBar({onPressFunction}) {
           name="add-circle"
           size={75}
           color={'#8490B8'}
-          style={{margin: -6, bottom: 3, left: 1}}
+          style={styles.iconStyle}
         />
       </TouchableOpacity>
     </View>
@@ -27,5 +27,10 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: 'black',
     borderRadius: 100,
+  },
+  iconStyle: {
+    margin: -6,
+    bottom: 3,
+    left: 1,
   },
 });

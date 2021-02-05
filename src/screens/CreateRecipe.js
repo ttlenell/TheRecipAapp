@@ -49,7 +49,7 @@ export default function CreateRecipe({navigation}) {
             return index;
           }}
           renderItem={({item}) => (
-            <View style={{flexDirection: 'column-reverse'}}>
+            <View>
               <Text style={styles.flatListItems}>
                 Name: {item.name}, Category: {item.category} Amount:{' '}
                 {item.amount} {item.measure}
@@ -62,20 +62,10 @@ export default function CreateRecipe({navigation}) {
         />
       </View>
       <View style={styles.cookingTextView}>
-        <Text
-          style={{
-            ...styles.textStyle,
-            fontSize: 15,
-            color: 'black',
-            textAlign: 'left',
-          }}>
-          {cookingTextBox}
-        </Text>
+        <Text style={styles.noCookingTextAdded}>{cookingTextBox}</Text>
       </View>
       <View style={styles.timer}>
-        <Text style={{...styles.textStyle, fontSize: 20, color: 'black'}}>
-          Timer set to: {timerSet}
-        </Text>
+        <Text style={styles.timerTextStyle}>Timer set to: {timerSet}</Text>
       </View>
       <IngredientInput setIngredient={setIngredients} />
       <CookingInstructionsInput
@@ -87,7 +77,7 @@ export default function CreateRecipe({navigation}) {
         onPress={() => {
           addRecipeToFirebase();
         }}>
-        <Text style={{...styles.textStyle, fontSize: 15}}>Save</Text>
+        <Text style={styles.saveButtonText}>Save</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -115,6 +105,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'black',
   },
+  noCookingTextAdded: {
+    fontSize: 15,
+    color: 'black',
+    textAlign: 'left',
+    fontWeight: 'bold',
+  },
 
   recipeName: {
     color: 'black',
@@ -122,6 +118,12 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     fontStyle: 'italic',
+  },
+  timerTextStyle: {
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   textStyle: {
     color: 'white',
@@ -159,5 +161,11 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+  },
+  saveButtonText: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });

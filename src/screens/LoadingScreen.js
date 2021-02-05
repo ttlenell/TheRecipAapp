@@ -6,7 +6,7 @@ import {FirebaseContext} from '../context/FirebaseContext';
 
 // eslint-disable-next-line no-undef
 export default LoadingScreen = () => {
-  const [_, setUser] = useContext(UserContext);
+  const [, setUser] = useContext(UserContext);
   const firebase = useContext(FirebaseContext);
 
   useEffect(() => {
@@ -32,11 +32,11 @@ export default LoadingScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>Please wait</Text>
-      <Text style={styles.text2}>Loading the recipe app....</Text>
+      <Text style={styles.text2}>Loading The Recipe app....</Text>
       <ActivityIndicator
         size="large"
         color=" black"
-        style={{width: 400, height: 400}}
+        style={styles.indicatorStyle}
         animating={true}
       />
     </View>
@@ -57,5 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 45,
     fontStyle: 'italic',
     marginTop: 50,
+  },
+  indicatorStyle: {
+    width: 400,
+    height: 400,
   },
 });

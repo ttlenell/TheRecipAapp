@@ -1,17 +1,12 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 
-// import HomeScreen from '../screens/HomeScreen';
-// import FavoritesScreen from '../screens/FavoritesScreen';
-// import SearchScreen from '../screens/SearchScreen';
-
 import {createStackNavigator} from '@react-navigation/stack';
 import DrawerNavigator from '../navigators/DrawerNavigation';
 import CreateRecipeScreen from '../screens/CreateRecipe';
 import RecipeDetailScreen from '../screens/RecipeDetailScreen';
 
-// eslint-disable-next-line no-undef
-export default MainStackScreens = () => {
+const MainStackScreens = () => {
   const MainStack = createStackNavigator();
 
   return (
@@ -22,3 +17,5 @@ export default MainStackScreens = () => {
     </MainStack.Navigator>
   );
 };
+
+export default MainStackScreens;

@@ -41,33 +41,19 @@ const RecipeInput = ({setRecipeName}) => {
             />
             <View style={styles.modalRow}>
               <TouchableHighlight
-                style={{
-                  ...styles.modalButton,
-                  backgroundColor: '#2196F3',
-                  top: 15,
-                  right: 20,
-                  borderColor: 'black',
-                  borderWidth: 0.7,
-                }}
+                style={styles.submitButton}
                 onPress={() => {
                   toggleModalVisibility();
                   addRecipeName();
                 }}>
-                <Text style={{...styles.textStyle, fontSize: 20}}>Submit</Text>
+                <Text style={styles.submitCloseTextStyle}>Submit</Text>
               </TouchableHighlight>
               <TouchableHighlight
-                style={{
-                  ...styles.modalButton,
-                  backgroundColor: '#2196F3',
-                  top: 15,
-                  left: 20,
-                  borderColor: 'black',
-                  borderWidth: 0.7,
-                }}
+                style={styles.closeButton}
                 onPress={() => {
                   toggleModalVisibility();
                 }}>
-                <Text style={{...styles.textStyle, fontSize: 20}}>Close</Text>
+                <Text style={styles.submitCloseTextStyle}>Close</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -142,11 +128,49 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  submitButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    right: 20,
+    top: 20,
+    borderWidth: 0.7,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  closeButton: {
+    top: 20,
+    left: 20,
+    borderColor: 'black',
+    borderWidth: 0.7,
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 15,
+  },
+  submitCloseTextStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 20,
   },
   modalText: {
     marginBottom: 110,
